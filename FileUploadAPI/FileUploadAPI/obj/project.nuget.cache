@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "/F62mrKP+AYIR4Lz3+tGmchBa3Vf0WboNmJPE1kbr5p+fcuG7dM48xtAtaQg/Grrc467MFzAbsbktNJX+LJA1g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mahab\\Desktop\\Test\\FileUploadAPI\\FileUploadAPI\\FileUploadAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mahab\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.14\\microsoft.netcore.app.host.win-x64.3.1.14.nupkg.sha512"
+  ],
+  "logs": []
+}
