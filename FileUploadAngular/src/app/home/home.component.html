@@ -1,12 +1,14 @@
 
 <div class="text-center">
-    <input class="form-control" type="file" 
-            (change)="onChange($event)">
-  
-    <button (click)="onUpload()" 
-        class="btn btn-success">
-        Upload
-    </button>
+    <div class="col-md-6">
+        <input class="form-control" type="file" 
+                (change)="onChange($event)">
+    
+        <button (click)="onUpload()" 
+            class="btn btn-success mt-2">
+            Upload
+        </button>
+    </div>
 </div>
   
 <!-- Shareable short link of  uoloaded file -->
