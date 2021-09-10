@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,9 +16,11 @@ namespace FileUploadAPI.Controllers
     public class FileController : ControllerBase
     {
         private readonly IHostingEnvironment _hostingEnv;
-        public FileController(IHostingEnvironment hostingEnv)
+        private readonly IOptions<FileSettingModel> _fileSettings;
+        public FileController(IHostingEnvironment hostingEnv, IOptions<FileSettingModel> fileSettings)
         {
             _hostingEnv = hostingEnv;
+            _fileSettings = fileSettings;
         }
 
         [HttpPost("upload")]
@@ -25,7 +28,8 @@ namespace FileUploadAPI.Controllers
         {
             FileUploadViewModel fileUpload = new FileUploadViewModel();
             //Filesize
-            fileUpload.FileSize = 550;
+            //fileUpload.FileSize = 550;
+            fileUpload.FileSize = _fileSettings.Value.FileSize;
             bool result = fileUpload.UploadUserFile(file);
 
             if (result)

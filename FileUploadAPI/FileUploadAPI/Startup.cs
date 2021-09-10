@@ -1,3 +1,4 @@
+using FileUploadAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +39,8 @@ namespace FileUploadAPI
                 options.JsonSerializerOptions.DictionaryKeyPolicy = null;
             });
             services.AddCors();
+            //appsetting
+            services.Configure<FileSettingModel>(Configuration.GetSection("FileSetting"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
