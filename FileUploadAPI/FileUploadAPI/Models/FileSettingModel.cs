@@ -8,5 +8,12 @@ namespace FileUploadAPI.Models
     public class FileSettingModel
     {
         public int FileSize { get; set; }
+        public string Location { get; set; }
+        public FileTypeMap[] FileType { get; set; }
+    }
+    public class FileTypeMap
+    {
+        public string Key { get; set; }
+        public byte[] Value { get; set; }
     }
 }

@@ -12,6 +12,9 @@ namespace FileUploadAPI.Models
     {
         public string Message { get; set; }
         public decimal FileSize { get; set; }
+        public IFormFile File { get; set; }
+        public FileTypeMap[] FileType { get; set; }
+        public bool IsSuccess { get; set; }
 
         private byte[] fileByte;
         private static readonly byte[] PDF = { 37, 80, 68, 70, 45, 49, 46 };

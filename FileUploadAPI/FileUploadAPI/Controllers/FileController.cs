@@ -17,10 +17,14 @@ namespace FileUploadAPI.Controllers
     {
         private readonly IHostingEnvironment _hostingEnv;
         private readonly IOptions<FileSettingModel> _fileSettings;
-        public FileController(IHostingEnvironment hostingEnv, IOptions<FileSettingModel> fileSettings)
+        private readonly FileUploadService _fileUploadService;
+        public FileController(IHostingEnvironment hostingEnv,
+            IOptions<FileSettingModel> fileSettings,
+            FileUploadService fileUploadService)
         {
             _hostingEnv = hostingEnv;
             _fileSettings = fileSettings;
+            _fileUploadService = fileUploadService;
         }
 
         [HttpPost("upload")]
@@ -30,9 +34,12 @@ namespace FileUploadAPI.Controllers
             //Filesize
             //fileUpload.FileSize = 550;
             fileUpload.FileSize = _fileSettings.Value.FileSize;
-            bool result = fileUpload.UploadUserFile(file);
+            fileUpload.FileType = _fileSettings.Value.FileType;
+            fileUpload.File = file;
 
-            if (result)
+            var result = _fileUploadService.UploadUserFile(fileUpload);
+
+            if (result.IsSuccess)
             {
                 var uniqueFolderName = Guid.NewGuid().ToString();
                 Directory.CreateDirectory(Path.Combine(_hostingEnv.WebRootPath, "UploadFile", uniqueFolderName));              
