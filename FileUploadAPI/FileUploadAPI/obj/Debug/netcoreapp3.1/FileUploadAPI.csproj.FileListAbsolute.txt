@@ -17,4 +17,3 @@ C:\Users\mahab\Desktop\Test\FileUploadAPI\FileUploadAPI\obj\Debug\netcoreapp3.1\
 C:\Users\mahab\Desktop\Test\FileUploadAPI\FileUploadAPI\obj\Debug\netcoreapp3.1\FileUploadAPI.dll
 C:\Users\mahab\Desktop\Test\FileUploadAPI\FileUploadAPI\obj\Debug\netcoreapp3.1\FileUploadAPI.pdb
 C:\Users\mahab\Desktop\Test\FileUploadAPI\FileUploadAPI\obj\Debug\netcoreapp3.1\FileUploadAPI.genruntimeconfig.cache
-C:\Users\mahab\Desktop\Test\FileUploadAPI\FileUploadAPI\obj\Debug\netcoreapp3.1\FileUploadAPI.csprojAssemblyReference.cache
