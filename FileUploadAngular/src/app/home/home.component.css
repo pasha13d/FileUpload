@@ -1,0 +1,9 @@
+.fileMargin {
+    margin-left: 5px;
+}
+.alertMessage {
+    padding: 10px;
+    /*background-color: #31B0D5;*/
+    color: #31B0D5;
+    margin-top: 5px;
+}

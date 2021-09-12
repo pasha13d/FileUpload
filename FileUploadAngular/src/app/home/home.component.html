@@ -1,8 +1,8 @@
 
-<div class="col-md-6 position-absolute top-0 start-50 translate-middle-x">
+<div class="col-md-4 position-absolute top-50 start-50 translate-middle">
     <h2 class="bg-secondary text-white text-center p-1 rounded">File Upload</h2>
     <div class="rounded bg-light p-1">
-        <input class="" type="file" 
+        <input class="fileMargin" type="file" 
                 (change)="onChange($event)">
     
         <button (click)="onUpload()" 
@@ -12,8 +12,8 @@
         <div class="container" *ngIf="loading">
             <h5>Loading ...</h5>
         </div>
-        <div class="container" *ngIf="!loading">
-            <h5>{{ message }}</h5>
+        <div class="container alertMessage" *ngIf="!loading">
+            <h6>{{ message }}</h6>
         </div>
     </div>
 </div>

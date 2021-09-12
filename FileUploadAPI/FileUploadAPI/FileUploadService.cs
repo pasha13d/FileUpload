@@ -34,7 +34,7 @@ namespace FileUploadAPI
 
                 if (contentType == null)
                 {
-                    fileUpload.Message = "Invalid file extension - uploads word/pdf/excel/txt file only";
+                    fileUpload.Message = "Invalid file extension - uploads word/pdf/excel/txt/jpg/png file only";
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace FileUploadAPI
                     }
                     else
                     {
-                        fileUpload.Message = "File Is Successfully Uploaded";
+                        fileUpload.Message = "Successfully Uploaded";
                         fileUpload.IsSuccess = true;
                     }
                 }
