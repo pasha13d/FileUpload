@@ -14,46 +14,59 @@ namespace FileUploadAPI
         {
             //byte[] fileBytes = System.IO.File.ReadAllBytes(path);
             //FileUploadViewModel fileUpload = new FileUploadViewModel();
-            if (fileUpload.File.Length > 0)
+            if(fileUpload.File != null)
             {
-                using (var ms = new MemoryStream())
+                if (fileUpload.File.Length > 0)
                 {
-                    fileUpload.File.CopyTo(ms);
-                    fileByte = ms.ToArray();
-                }
-            }
-            //bool result = false;
-            fileUpload.IsSuccess = false;
-            try
-            {
-                var contentType = fileUpload.FileType
-                    .Where(m => m.Key.Equals(fileUpload.File.ContentType, StringComparison.OrdinalIgnoreCase)
-                    && fileByte.Take(7).ToArray().SequenceEqual(m.Value)
-                    )
-                    .FirstOrDefault();
-
-                if (contentType == null)
-                {
-                    fileUpload.Message = "Invalid file extension - uploads word/pdf/excel/txt/jpg/png file only";
-                }
-                else
-                {
-
-                    if (fileUpload.File.Length > (fileUpload.FileSize * 1024))
+                    using (var ms = new MemoryStream())
                     {
-                        fileUpload.Message = "File size should be upto " + fileUpload.FileSize + "KB";
+                        fileUpload.File.CopyTo(ms);
+                        fileByte = ms.ToArray();
+                    }
+                }
+                //bool result = false;
+                fileUpload.IsSuccess = false;
+                try
+                {
+                    var contentType = fileUpload.FileType
+                        .Where(m => m.Key.Equals(fileUpload.File.ContentType, StringComparison.OrdinalIgnoreCase)
+                        && fileByte.Take(7).ToArray().SequenceEqual(m.Value)
+                        )
+                        .FirstOrDefault();
+
+                    if (contentType == null)
+                    {
+                        fileUpload.Message = "Invalid file extension - uploads word/pdf/excel/txt/jpg/png file only";
+                        fileUpload.AlertType = "danger";
                     }
                     else
                     {
-                        fileUpload.Message = "Successfully Uploaded";
-                        fileUpload.IsSuccess = true;
+
+                        if (fileUpload.File.Length > (fileUpload.FileSize * 1024))
+                        {
+                            fileUpload.Message = "File size should be upto " + fileUpload.FileSize + "KB";
+                            fileUpload.AlertType = "danger";
+                        }
+                        else
+                        {
+                            fileUpload.Message = "Successfully Uploaded";
+                            fileUpload.IsSuccess = true;
+                            fileUpload.AlertType = "success";
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    fileUpload.Message = "Upload Container Should Not Be Empty";
+                    fileUpload.AlertType = "danger";
+                }
             }
-            catch (Exception ex)
+            else
             {
-                fileUpload.Message = "Upload Container Should Not Be Empty";
+                fileUpload.Message = "Please choose a file.";
+                fileUpload.AlertType = "danger";
             }
+
             return fileUpload;
         }
     }

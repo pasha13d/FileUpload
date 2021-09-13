@@ -48,9 +48,8 @@ namespace FileUploadAPI.Controllers
                 {
                     await file.CopyToAsync(stream);
                 }
-            }
-            
-            return Ok(new JsonResult(fileUpload.Message));
+            }            
+            return Ok(new JsonResult(fileUpload.Message, fileUpload.AlertType));
         }
     }
 }

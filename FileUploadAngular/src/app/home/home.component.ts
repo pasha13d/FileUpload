@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   loading: boolean = false; // Flag variable
   file: File = null; // Variable to store file
   message: string;
-
+  alertType: string;
   // Inject service 
   constructor(private fileUploadService: UploadService) { }
 
@@ -29,6 +29,12 @@ export class HomeComponent implements OnInit {
 
   // OnClick of button Upload
   onUpload() {
+    if(!this.file)
+    {
+      this.message = "Please choose a file.";
+      this.alertType="danger";
+      return;
+    }
       this.loading = !this.loading;
       console.log(this.file);
       this.fileUploadService.upload(this.file).subscribe(
@@ -37,13 +43,9 @@ export class HomeComponent implements OnInit {
             if(response && response.Value)
             {
               this.message = response.Value;
+              this.alertType = response.SerializerSettings;
             }
             this.loading = false;
-            // if (typeof (response) === 'object') {
-            //     // Short link via api response
-            //     this.shortLink = response.link;
-            //     this.loading = false; // Flag variable 
-            // }
           }
       );
   }
