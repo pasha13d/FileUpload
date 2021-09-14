@@ -45,7 +45,7 @@ namespace FileUploadAPI
                         if (fileUpload.File.Length > (fileUpload.FileSize * 1024))
                         {
                             fileUpload.Message = "File size should be upto " + fileUpload.FileSize + "KB";
-                            fileUpload.AlertType = "danger";
+                            fileUpload.AlertType = "info";
                         }
                         else
                         {
